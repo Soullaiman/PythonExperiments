@@ -1,0 +1,25 @@
+Filtered Output:
+===
+Hostname: sw1
+Type: Cisco Catalyst 9000 UADP 8 Port Virtual Switch
+IP: 10.10.20.175
+MAC Address: 52:54:00:02:19:54
+Serial Number: CML12345UAD
+===
+Hostname: sw2
+Type: Cisco Catalyst 9000 UADP 8 Port Virtual Switch
+IP: 10.10.20.176
+MAC Address: 52:54:00:07:29:d0
+Serial Number: CML12345
+===
+Hostname: sw3
+Type: Cisco Catalyst 9000 UADP 8 Port Virtual Switch
+IP: 10.10.20.177
+MAC Address: 52:54:00:05:77:13
+Serial Number: CML12345ABC
+===
+Hostname: sw4
+Type: Cisco Catalyst 9000 UADP 8 Port Virtual Switch
+IP: 10.10.20.178
+MAC Address: 52:54:00:0f:1c:07
+Serial Number: CML54321

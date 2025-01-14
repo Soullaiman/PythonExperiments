@@ -7,13 +7,13 @@ print ("Current date and time: ")
 print(datetime.datetime.now())
 # HARD CODED VARIABLES
 DNAC_scheme = "https://"
-DNAC_authority="sandboxdnac.cisco.com"
+DNAC_authority="10.10.20.85"
 DNAC_port=":443"
 DNAC_path_token="/dna/system/api/v1/auth/token"
 DNAC_path="/dna/intent/api/v1/network-device"
 #### IT IS NECESSARY TO HAVE A USERNAME AND PASSWORD
-DNAC_user = "devnetuser"
-DNAC_psw = "Cisco123!"
+DNAC_user = "admin"
+DNAC_psw = "Cisco1234!"
 #REQUEST TOKEN BASED ON devnetuser Cisco123!
 token_req_url = DNAC_scheme+DNAC_authority+DNAC_path_token
 auth = (DNAC_user, DNAC_psw)
@@ -44,3 +44,30 @@ for device in resp_devices_json['response']:
         print('Hostname: ' + device['hostname'])
         print('Type: ' + device['type'])
         print('IP: ' + device['managementIpAddress'])
+
+
+# File to store the output
+output_file = "output.txt"
+
+# User-defined option to show all data or filtered output
+show_all = input("Show full API response? (yes/no): ").strip().lower() == "yes"
+
+with open(output_file, "w") as f:
+    if show_all:
+        # Save the full API response
+        f.write("Full API Response:\n")
+        f.write(json.dumps(resp_devices_json, indent=4))
+        print(f"Full API response saved to {output_file}")
+    else:
+        # Save the filtered output
+        f.write("Filtered Output:\n")
+        for device in resp_devices_json.get('response', []):
+            f.write("===\n")
+            f.write(f"Hostname: {device.get('hostname', 'N/A')}\n")
+            f.write(f"Type: {device.get('type', 'N/A')}\n")
+            f.write(f"IP: {device.get('managementIpAddress', 'N/A')}\n")
+            f.write(f"MAC Address: {device.get('macAddress', 'N/A')}\n")
+            f.write(f"Serial Number: {device.get('serialNumber', 'N/A')}\n")
+        print(f"Filtered output saved to {output_file}")
+
+print("Script execution completed.")
